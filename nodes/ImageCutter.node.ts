@@ -27,6 +27,28 @@ const FORMAT_SHARP: Record<OutputFormat, 'png' | 'jpeg' | 'webp'> = {
   webp: 'webp',
 };
 
+const getAnchoredX = (anchor: Anchor, imageWidth: number, cropWidth: number): number => {
+  switch (anchor) {
+    case 'left':
+      return 0;
+    case 'right':
+      return imageWidth - cropWidth;
+    default:
+      return Math.floor((imageWidth - cropWidth) / 2);
+  }
+};
+
+const getAnchoredY = (anchor: Anchor, imageHeight: number, cropHeight: number): number => {
+  switch (anchor) {
+    case 'top':
+      return 0;
+    case 'bottom':
+      return imageHeight - cropHeight;
+    default:
+      return Math.floor((imageHeight - cropHeight) / 2);
+  }
+};
+
 export class ImageCutter implements INodeType {
   description: INodeTypeDescription = {
     displayName: 'Image Cutter & Cropper',
@@ -479,8 +501,8 @@ export class ImageCutter implements INodeType {
           });
         }
 
-        const computedX = cropX >= 0 ? cropX : this.getAnchoredX(anchor, imageWidth, cropWidth);
-        const computedY = cropY >= 0 ? cropY : this.getAnchoredY(anchor, imageHeight, cropHeight);
+        const computedX = cropX >= 0 ? cropX : getAnchoredX(anchor, imageWidth, cropWidth);
+        const computedY = cropY >= 0 ? cropY : getAnchoredY(anchor, imageHeight, cropHeight);
 
         if (computedX < 0 || computedY < 0) {
           throw new NodeOperationError(this.getNode(), 'Crop position is outside the image', {
@@ -526,25 +548,4 @@ export class ImageCutter implements INodeType {
     return [returnData];
   }
 
-  private getAnchoredX(anchor: Anchor, imageWidth: number, cropWidth: number): number {
-    switch (anchor) {
-      case 'left':
-        return 0;
-      case 'right':
-        return imageWidth - cropWidth;
-      default:
-        return Math.floor((imageWidth - cropWidth) / 2);
-    }
-  }
-
-  private getAnchoredY(anchor: Anchor, imageHeight: number, cropHeight: number): number {
-    switch (anchor) {
-      case 'top':
-        return 0;
-      case 'bottom':
-        return imageHeight - cropHeight;
-      default:
-        return Math.floor((imageHeight - cropHeight) / 2);
-    }
-  }
 }
