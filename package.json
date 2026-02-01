@@ -3,6 +3,15 @@
   "version": "0.1.0",
   "description": "Community node for slicing and cropping images in n8n",
   "license": "MIT",
+  "author": "",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "bugs": {
+    "url": ""
+  },
+  "homepage": "",
   "keywords": [
     "n8n",
     "n8n-community-node",
@@ -29,5 +38,13 @@
   },
   "devDependencies": {
     "typescript": "^5.4.5"
+  },
+  "n8n": {
+    "nodes": [
+      "dist/nodes/ImageCutter.node.js"
+    ]
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

@@ -15,6 +15,30 @@ Community node for **n8n** that slices or crops images using binary data only.
 npm install -g n8n-nodes-image-cutter
 ```
 
+## Publishing to npm
+
+1. Update `package.json` with `author`, `repository`, and `homepage` values.
+2. Install dependencies and build the `dist` bundle:
+
+```bash
+npm install
+npm run build
+```
+
+3. Login and publish:
+
+```bash
+npm login
+npm publish --access public
+```
+
+4. For a new release, bump the version before publishing:
+
+```bash
+npm version patch
+npm publish --access public
+```
+
 ## Node: Image Cutter & Cropper
 
 ### General Parameters
