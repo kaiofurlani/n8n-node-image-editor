@@ -1,4 +1,4 @@
-# n8n-nodes-image-cutter
+# n8n-node-image-editor
 
 Community node for **n8n** that slices or crops images using binary data only.
 
@@ -12,7 +12,7 @@ Community node for **n8n** that slices or crops images using binary data only.
 ## Installation
 
 ```bash
-npm install -g n8n-nodes-image-cutter
+npm install -g n8n-node-image-editor
 ```
 
 ## Publishing to npm

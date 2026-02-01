@@ -1,31 +1,24 @@
 {
-  "name": "n8n-nodes-image-cutter",
+  "name": "n8n-node-image-editor",
   "version": "0.1.0",
   "description": "Community node for slicing and cropping images in n8n",
   "license": "MIT",
   "author": "",
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "git+https://github.com/kaiofurlani/n8n-node-image-editor.git"
   },
   "bugs": {
-    "url": ""
+    "url": "https://github.com/kaiofurlani/n8n-node-image-editor/issues"
   },
-  "homepage": "",
+  "homepage": "https://github.com/kaiofurlani/n8n-node-image-editor#readme",
   "keywords": [
-    "n8n",
-    "n8n-community-node",
-    "image",
-    "slice",
-    "crop",
-    "sharp"
+    "n8n-community-node-package"
   ],
-  "main": "dist/nodes/ImageCutter.node.js",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "files": [
-    "dist",
-    "nodes",
-    "README.md",
-    "package.json"
+    "dist"
   ],
   "scripts": {
     "build": "tsc",
@@ -42,7 +35,8 @@
   "n8n": {
     "nodes": [
       "dist/nodes/ImageCutter.node.js"
-    ]
+    ],
+    "credentials": []
   },
   "publishConfig": {
     "access": "public"
